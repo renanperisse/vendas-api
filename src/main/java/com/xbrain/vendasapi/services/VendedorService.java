@@ -6,5 +6,5 @@ import com.xbrain.vendasapi.domain.Vendedor;
 public interface VendedorService {
 
     Vendedor cadastrar(VendedorRequest vendedorRequest);
-
+    Vendedor buscarPorId(Long id);
 }

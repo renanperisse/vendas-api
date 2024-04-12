@@ -19,4 +19,10 @@ public class VendedorServiceImpl implements VendedorService {
     public Vendedor cadastrar(VendedorRequest vendedorRequest) {
         return vendedorRepository.save(new Vendedor(vendedorRequest.nome()));
     }
+
+    @Override
+    public Vendedor buscarPorId(Long id) {
+        return vendedorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vendedor não encontrado para o id " + id));
+    }
 }

@@ -3,7 +3,7 @@ package com.xbrain.vendasapi.domain;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity(name = "TB_VENDA")
 public class Venda {
@@ -12,7 +12,7 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate dataVenda;
+    private LocalDateTime dataHoraVenda;
 
     private BigDecimal valor;
 
@@ -23,11 +23,10 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(BigDecimal valor, Vendedor vendedor, LocalDate dataVenda, Long id) {
+    public Venda(BigDecimal valor, Vendedor vendedor, LocalDateTime dataHoraVenda) {
         this.valor = valor;
         this.vendedor = vendedor;
-        this.dataVenda = dataVenda;
-        this.id = id;
+        this.dataHoraVenda = dataHoraVenda;
     }
 
     public Long getId() {
@@ -38,12 +37,12 @@ public class Venda {
         this.id = id;
     }
 
-    public LocalDate getDataVenda() {
-        return dataVenda;
+    public LocalDateTime getDataHoraVenda() {
+        return dataHoraVenda;
     }
 
-    public void setDataVenda(LocalDate dataVenda) {
-        this.dataVenda = dataVenda;
+    public void setDataHoraVenda(LocalDateTime dataHoraVenda) {
+        this.dataHoraVenda = dataHoraVenda;
     }
 
     public BigDecimal getValor() {
