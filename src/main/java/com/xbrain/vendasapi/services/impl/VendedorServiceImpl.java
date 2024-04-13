@@ -3,6 +3,7 @@ package com.xbrain.vendasapi.services.impl;
 import com.xbrain.vendasapi.controllers.dto.VendasVendedorResponse;
 import com.xbrain.vendasapi.controllers.dto.VendedorRequest;
 import com.xbrain.vendasapi.domain.Vendedor;
+import com.xbrain.vendasapi.exceptions.VendedorNaoEncontradoException;
 import com.xbrain.vendasapi.repositories.VendaRepository;
 import com.xbrain.vendasapi.repositories.VendedorRepository;
 import com.xbrain.vendasapi.services.VendedorService;
@@ -35,7 +36,7 @@ public class VendedorServiceImpl implements VendedorService {
     @Override
     public Vendedor buscarPorId(Long id) {
         return vendedorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Vendedor não encontrado para o id " + id));
+                .orElseThrow(() -> new VendedorNaoEncontradoException("Vendedor não encontrado para o id " + id));
     }
 
     @Override
