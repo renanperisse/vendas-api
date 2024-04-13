@@ -11,5 +11,4 @@ public record VendaRequest(
         @Min(value = 1L, message = "O valor mínimo da venda é de R$ 1,00")
         @NotNull(message = "O valor da venda não pode ser nula.")
         BigDecimal valor) {
-
 }

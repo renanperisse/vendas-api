@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity(name = "TB_VENDA")
 public class Venda {
@@ -27,6 +28,13 @@ public class Venda {
         this.valor = valor;
         this.vendedor = vendedor;
         this.dataHoraVenda = dataHoraVenda;
+    }
+
+    public Venda(LocalDateTime dataHoraVenda, Vendedor vendedor, BigDecimal valor, Long id) {
+        this.dataHoraVenda = dataHoraVenda;
+        this.vendedor = vendedor;
+        this.valor = valor;
+        this.id = id;
     }
 
     public Long getId() {
@@ -59,5 +67,18 @@ public class Venda {
 
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Venda venda = (Venda) o;
+        return Objects.equals(id, venda.id) && Objects.equals(dataHoraVenda, venda.dataHoraVenda) && Objects.equals(valor, venda.valor) && Objects.equals(vendedor, venda.vendedor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dataHoraVenda, valor, vendedor);
     }
 }
